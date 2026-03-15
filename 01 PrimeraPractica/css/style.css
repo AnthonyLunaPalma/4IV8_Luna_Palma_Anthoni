@@ -6,18 +6,18 @@
 }
 
 html, body{
-    background-color: #293133;
+    background-color: #0000009c;
 }
 
 .main_container{
-    border: 7px solid #666666;
+    border: 7px solid #0000009c;
     border-radius: 50px;
-    margin: 2rem;
-    background-color: #666666;
+    margin: 2rem;   
+    background-color: #0000009c;
 }
 
-nav, section, footer, aside, article{
-    border: 4px solid rgb(0, 0, 0);
+nav, section, aside, article{
+    border: 4px solid #000000;
     margin: 1rem;
     border-radius: 10px;
     padding: 1rem;
@@ -27,9 +27,16 @@ article, aside{
     width: 40%;
     display: inline-flex;
     height: 300px;
-    background-color: #515151;
+    background-color: #ECC0F6;
+    border: #D3BFF8;
 }
 
-nav, footer, section{
-    background-color: #666666;
+nav, footer{
+    background-color: #EC5113;
+    
+}
+
+section{
+    background-color: #E198F1;
+    border: 4px solid #D56FEB;
 }
