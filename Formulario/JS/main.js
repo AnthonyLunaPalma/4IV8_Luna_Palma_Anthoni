@@ -14,7 +14,7 @@ form.addEventListener("submit", e=>{
         warnings += `El nombre no es válido <br>`
         entrar = true
     }
-    if(edad.value.length <100){
+    if(edad.value.length >3){
         warnings += `La edad no es válida <br>`
         entrar = true
     }
