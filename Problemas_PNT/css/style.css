@@ -1,0 +1,162 @@
+:root{
+    --colorTextos: #49454567
+}
+
+*,
+::before,
+::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #ECC0F6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B695F3, #ECC0F6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #B695F3, #ECC0F6);
+    border: none;
+    margin: 0px;
+
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.problemas1{
+    background-color: #F8E9FC;
+    border: none;
+    width: 98%;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    display: flex;
+    margin: 10px;
+    margin-top: 100px;
+}
+
+.problemas2, .problemas3, .problemas4, .problemas5, .problemas6{
+    background-color: #F8E9FC;
+    border: none;
+    width: 98%;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    display: flex;
+    margin: 10px;
+}
+
+#titulo{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center; /* Centro horizontal */
+    align-items: center;    
+    background-color: #000000b6;
+    color: #fff;
+    border: none;
+    position: fixed;
+    top: 0;         
+    left: 0;       
+    width: 100%;
+    height: 90px;    
+    z-index: 1000;
+    backdrop-filter: blur(3px);             
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.p1, .p2, .p3, .p4, .p5, .p6{
+    background-color: #fff;
+    width: 20%;
+    display: flex;
+    border-radius: 10px;
+    padding: 40px 0;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin: auto;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.textop1, .textop2, .textop3, .textop4, .textop5, .textop6{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.capital, .compra, .porcentaje{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+#input1, #input2, #input3, #input41, #input42, #input43, #input51, #input52, #input6{
+    background: none;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+}
+#input1:focus, #input2:focus, #input3:focus, #input41:focus, #input42:focus, #input43:focus, #input51:focus, #input52:focus, #input6:focus{
+    outline: none;
+    color: #5e5d5d;
+}
+
+#input1:focus~.barra::before, #input2:focus~.barra::before, #input3:focus~.barra::before, #input41:focus~.barra::before, #input42:focus~.barra::before, #input43:focus~.barra::before, #input51:focus~.barra::before, #input52:focus~.barra::before, #input6:focus~.barra::before{
+    width: 100%;
+}
+
+.barra::before{
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to left, #B695F3, #ECC0F6);
+    transition: 0.3s ease width;
+    left: 0;
+}
+
+.barra{
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+#input1.barra~.barra::before, #input2.barra~.barra::before, #input3.barra~.barra::before, #input41.barra~.barra::before, #input42.barra~.barra::before, #input43.barra~.barra::before, #input51.barra~.barra::before, #input52.barra~.barra::before, #input6.barra~.barra::before{
+    width: 100%;
+}
+
+button{
+    height: 50px;
+    width: 60%;
+    margin: 20px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #B695F3;
+    background: -webkit-linear-gradient(to right, #B695F3, #7D43EA);
+    background: linear-gradient(to left, #B695F3, #7D43EA);
+    border: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+ol{
+    font-family: Arial, Helvetica, sans-serif;
+}
