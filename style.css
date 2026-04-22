@@ -4,6 +4,7 @@ body{
     background: linear-gradient(to right, #6f0000, #200122);
     border: none;
     margin: 0px;
+    padding-bottom: 20px;
 }
 
 .titulo{
