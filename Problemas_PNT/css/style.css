@@ -16,7 +16,6 @@ body{
     background: linear-gradient(to left, #B695F3, #ECC0F6);
     border: none;
     margin: 0px;
-
 }
 
 p{
@@ -36,7 +35,6 @@ p{
     padding-right: 3px;
     display: flex;
     margin: 10px;
-    margin-top: 100px;
 }
 
 .problemas2, .problemas3, .problemas4, .problemas5, .problemas6{
@@ -140,7 +138,7 @@ p{
     width: 100%;
 }
 
-button{
+.boton1, .boton2, .boton3, .boton4, .boton5, .boton6{
     height: 50px;
     width: 60%;
     margin: 20px auto;
@@ -159,4 +157,26 @@ button{
 
 ol{
     font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.botonre{
+    height: 50px;
+    width: 20%;
+    margin: 30px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #7D43EA;
+    background: -webkit-linear-gradient(to right, #7D43EA, #B695F3);
+    background: linear-gradient(to left, #7D43EA, #B695F3);
+    border: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
 }

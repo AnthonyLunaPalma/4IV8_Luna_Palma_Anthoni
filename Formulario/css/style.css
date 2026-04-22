@@ -11,14 +11,15 @@
 }
 
 body{
-    font-family: 'Reboto';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #5015BD;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #C947E6, #5015BD);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #C947E6, #5015BD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height: 650px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 h1{
@@ -31,11 +32,14 @@ form{
     padding: 40px 0;
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form{
     width: 100%;
     margin: auto;
+    display: block;
 }
 
 form .grupo{
@@ -118,4 +122,21 @@ button{
     height: 40px;
     font-size: 16px;
     cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
+
+.botonr{
+    display: block;
+    width: 21%;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.boton1{
+    background: #EC5113;
+    background: -webkit-linear-gradient(to right, #EC5113, #611AE6);
+    background: linear-gradient(to left, #EC5113, #611AE6);
 }

@@ -16,29 +16,32 @@
                         introdusca la cantidad que desea invertir en un año
                     </td>
                     <td>
-                        <input type="text" name="cantidad" id="cantidad" onkeypress="">
+                        <input type="text" name="cantidad" id="cantidadi" onkeypress="return validarn(event)">
                     </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <input type="button" value="calcular interes" name="enviar" onclick="">
+                        <input type="button" value="calcular interes" name="enviar" onclick="interes()">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Su saldo es de:
                     </td>
-                    <input type="text" name="sueldoi" id="sueldoi" readonly="readonly">
+                    <td>
+                        <input type="text" name="sueldoi" id="sueldoi" readonly="readonly">
+                        </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <input type="button" value="borrar  datos" name="borrar" onclick="">
+                        <input type="button" value="borrar  datos" name="delete" onclick="borrar()">
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+    <script src="./JS/interes.js"></script>
 </body>
 </html>
