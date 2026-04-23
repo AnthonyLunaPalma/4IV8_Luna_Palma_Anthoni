@@ -122,6 +122,7 @@ button{
     height: 40px;
     font-size: 16px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a{
@@ -139,4 +140,8 @@ a{
     background: #EC5113;
     background: -webkit-linear-gradient(to right, #EC5113, #611AE6);
     background: linear-gradient(to left, #EC5113, #611AE6);
+}
+
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

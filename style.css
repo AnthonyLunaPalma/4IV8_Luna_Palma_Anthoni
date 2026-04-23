@@ -8,7 +8,7 @@ body{
 }
 
 .titulo{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 36px;
     display: flex;
     justify-content: center; /* Centro horizontal */
@@ -26,6 +26,11 @@ body{
     -webkit-backdrop-filter: blur(3px);
 }
 
+.boton1:hover{
+  background-color: #EC5113;
+  color: #fff;
+}
+
 .boton1{
     border-radius: 10px;
     margin-bottom: 10px;
@@ -33,18 +38,20 @@ body{
     font-size: 20px;
     align-items: center;
     justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #b70000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #b70018;
     border: none;
     text-align: center;
     height: 50px;
     cursor: pointer;
     color: #fff;
     margin: auto;
+    transition: background-color 0.3s ease;
 }
 
 a{
     text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .p1{
@@ -55,9 +62,10 @@ a{
     margin: auto;
     margin-top: 130px;
     height: auto;
-    border-top: 15px solid #b70000;
+    border-top: 15px solid #b70018;
     display: block;
     padding: 15px;
+    transition: transform 0.3s ease-out;
 }
 
 .p2{
@@ -68,9 +76,10 @@ a{
     margin: auto;
     margin-top: 20px;
     height: auto;
-    border-top: 15px solid #b70000;
+    border-top: 15px solid #b70018;
     display: block;
     padding: 15px;
+    transition: transform 0.3s ease-out;
 }
 
 .parrafo1{
@@ -82,4 +91,16 @@ a{
     margin-left: auto;
     width: 20%;
     justify-content: right;
+}
+
+.p1:hover {
+  transform: translateY(-5px);
+}
+
+.p2:hover {
+  transform: translateY(-8px);
+}
+
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

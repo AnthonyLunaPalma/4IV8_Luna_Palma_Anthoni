@@ -19,7 +19,7 @@ body{
 }
 
 p{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .problemas1{
@@ -142,7 +142,7 @@ p{
     height: 50px;
     width: 60%;
     margin: 20px auto;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #B695F3;
     background: -webkit-linear-gradient(to right, #B695F3, #7D43EA);
     background: linear-gradient(to left, #B695F3, #7D43EA);
@@ -156,7 +156,7 @@ p{
 }
 
 ol{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a{
@@ -167,7 +167,7 @@ a{
     height: 50px;
     width: 20%;
     margin: 30px auto;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #7D43EA;
     background: -webkit-linear-gradient(to right, #7D43EA, #B695F3);
     background: linear-gradient(to left, #7D43EA, #B695F3);
@@ -179,4 +179,8 @@ a{
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;
+}
+
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
