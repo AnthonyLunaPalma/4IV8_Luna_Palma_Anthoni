@@ -12,9 +12,9 @@
 
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #5015BD;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #C947E6, #5015BD);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #C947E6, #5015BD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #5015BD;
+    background: -webkit-linear-gradient(to right, #C947E6, #5015BD);
+    background: linear-gradient(to left, #C947E6, #5015BD);
     height: 650px;
     display: flex;
     flex-direction: column;

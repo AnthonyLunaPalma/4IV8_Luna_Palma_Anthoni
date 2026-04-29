@@ -11,7 +11,7 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 36px;
     display: flex;
-    justify-content: center; /* Centro horizontal */
+    justify-content: center;
     align-items: center;    
     background-color: #000000b6;
     color: #fff;
@@ -47,6 +47,7 @@ body{
     color: #fff;
     margin: auto;
     transition: background-color 0.3s ease;
+    transition: transform 0.3s;
 }
 
 a{
@@ -56,11 +57,10 @@ a{
 
 .p1{
     background-color: #fff;
-    width: 93%;
+    width: 50%;
     display: flex;
     border-radius: 10px;
     margin: auto;
-    margin-top: 130px;
     height: auto;
     border-top: 15px solid #b70018;
     display: block;
@@ -70,7 +70,7 @@ a{
 
 .p2{
     background-color: #fff;
-    width: 93%;
+    width: 50%;
     display: flex;
     border-radius: 10px;
     margin: auto;
@@ -89,7 +89,7 @@ a{
 .container{
     margin: 1px;
     margin-left: auto;
-    width: 20%;
+    width: 40%;
     justify-content: right;
 }
 
@@ -103,4 +103,25 @@ a{
 
 p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.boton1:hover{
+  background-color: #EC5113;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.act{
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.acti{
+    margin-top: 120px;
+}
+
+.act{
+    font-size: 36px;
+    text-align: center;
 }

@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primer ejercicio</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <div class="centrado">
+            <label for="" class="label"><b>Formulario para calcular una inversion al x%</b></label>
+        </div>
     <div class="Ejercicio1">
         <form action="" method="post" id="Formularioejer1" name="formularioejer"></form>
-        <label for="">Formulario para calcular una inversion al x%</label>
         <div class="container-table">
             <table class="table">
                 <tr>
@@ -16,13 +19,13 @@
                         introdusca la cantidad que desea invertir en un año
                     </td>
                     <td>
-                        <input type="text" name="cantidad" id="cantidadi" onkeypress="return validarn(event)">
+                        <input type="text" class="numero" name="cantidad" id="cantidadi" onkeypress="return validarn(event)"><span class="barra"></span>
                     </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <input type="button" value="calcular interes" name="enviar" onclick="interes()">
+                        <input type="button" class="enviar" value="calcular interes" name="enviar" onclick="interes()">
                     </td>
                 </tr>
                 <tr>
@@ -36,11 +39,16 @@
                 <tr>
                     <td></td>
                     <td>
-                        <input type="button" value="borrar  datos" name="delete" onclick="borrar()">
+                        <input type="button" class="borrar" value="borrar  datos" name="delete" onclick="borrar()">
                     </td>
                 </tr>
             </table>
         </div>
+    </div>
+    <div class="regresar">
+        <a href="../index.html">
+            <button class="boton"><b>Regresar</b></button>
+        </a>
     </div>
     <script src="./JS/interes.js"></script>
 </body>

@@ -44,6 +44,7 @@ body{
     color: #fff;
     margin: auto;
     transition: background-color 0.3s ease;
+    transition: transform 0.2s;
 }
 
 a{
@@ -53,7 +54,7 @@ a{
 
 .p1{
     background-color: #fff;
-    width: 93%;
+    width: 50%;
     display: flex;
     border-radius: 10px;
     margin: auto;
@@ -67,7 +68,7 @@ a{
 
 .p2{
     background-color: #fff;
-    width: 93%;
+    width: 50%;
     display: flex;
     border-radius: 10px;
     margin: auto;
@@ -86,7 +87,7 @@ a{
 .container{
     margin: 1px;
     margin-left: auto;
-    width: 20%;
+    width: 40%;
     justify-content: right;
 }
 
@@ -108,6 +109,7 @@ a{
     margin-bottom: 20px;
     margin-left: 600px;
     transition: background-color 0.3s ease;
+    transition: transform 0.2s;
 }
 
 .container2{
@@ -125,11 +127,13 @@ a{
 .boton1:hover{
   background-color: #EC5113;
   color: #fff;
+  transform: scale(1.1);
 }
 
 .boton2:hover{
   background-color: #EC5113;
   color: #fff;
+  transform: scale(1.1);
 }
 
 p{
