@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de CRUD</title>
+</head>
+<body>
+    <header>
+        <h1>ejemplo de gestion de usuarios</h1>
+    </header>
+    <main>
+        <section class="formulario-section">
+            <h2 id="form-titulo">Agregar nuevo usuario</h2>
+            <form id="form-usuario">
+                <input type="hidden" id="id-usuario">
+                <div class="campo">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" placeholder="Aqui va tu nombre" maxlength="60" required>
+                    <span id="error-nombre" class="error"></span>
+                </div>
+                <div class="campo">
+                    <label for="Fecha">Fecha de nacimiento</label>
+                    <input type="date" id="fecha" required>
+                    <span id="error-fecha" class="error"></span>
+                </div>
+                <div class="campo">
+                    <label for="nota">Nota (0-10)</label>
+                    <input type="number" id="nombre" placeholder="Por ejemplo 8.5" min="0" max="10" required>
+                    <span id="error-nota" class="error"></span>
+                </div>
+                <button type="submit" id="btn-guardar">Guardar</button>
+                <button type="button" id="btn-cancelar" class="btn-secundario" style="display: none;">Cancelar</button>
+            </form>
+        </section>
+        <section class="tabla-section">
+            <h2>Lista de usuarios</h2>
+            <p id="mensaje-carga">Cargando usuarios</p>
+            <p id="mensaje-vaio" style="display: none;">No hay usuarios registrados</p>
+            <table id="tabla-usuarios" style="display: none;">
+                <thead>
+                    <tr>ID</tr>
+                    <tr>Nombre</tr>
+                    <tr>Fecha de nacimiento</tr>
+                    <tr>Notas</tr>
+                    <tr>Acciones</tr>
+                </thead>
+                <tbody id="tbody-usuarios">
+                    
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

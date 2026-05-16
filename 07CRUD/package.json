@@ -1,0 +1,20 @@
+{
+  "name": "07crud",
+  "version": "1.0.0",
+  "description": "Ejemplo de CRUD con vainillaJS",
+  "keywords": [
+    "crud",
+    "mysql",
+    "nodejs"
+  ],
+  "license": "ISC",
+  "author": "Luna Palma Anthony",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mysql2": "^3.22.3"
+  }
+}
