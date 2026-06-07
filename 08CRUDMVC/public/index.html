@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 3 - Tienda con Express y MySQL</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Compras</h1>
+        <p>Práctica 3 — Express + CORS + Relaciones entre Tablas</p>
+        <!-- Navegación por pestañas para cambiar entre secciones -->
+        <nav class="tabs">
+            <button class="tab active" onclick="cambiarSeccion('usuarios')">Usuarios</button>
+            <button class="tab" onclick="cambiarSeccion('productos')">Productos</button>
+            <button class="tab" onclick="cambiarSeccion('compras')">Compras</button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Panel de estado de la API -->
+        <section class="info-api">
+            <h3>Estado de la API</h3>
+            <div class="api-status">
+                <span id="api-metodo" class="badge">-</span>
+                <span id="api-url" class="api-url">-</span>
+                <span id="api-codigo" class="badge badge-neutral">-</span>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: USUARIOS -->
+        <!-- ========================================================= -->
+        <div id="seccion-usuarios" class="seccion">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-usuario">Agregar Usuario</h2>
+                <form id="form-usuario" novalidate>
+                    <input type="hidden" id="usuario-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="usuario-nombre">Nombre:</label>
+                            <input type="text" id="usuario-nombre" placeholder="Ej: María García" maxlength="100" required>
+                            <span class="error" id="error-usuario-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="usuario-email">Email:</label>
+                            <input type="email" id="usuario-email" placeholder="Ej: maria@email.com" maxlength="150" required>
+                            <span class="error" id="error-usuario-email"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-usuario">Guardar</button>
+                        <button type="button" id="btn-cancelar-usuario" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Usuarios <span id="contador-usuarios" class="badge badge-neutral"></span></h2>
+                <p id="carga-usuarios">Cargando...</p>
+                <table id="tabla-usuarios" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-usuarios"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: PRODUCTOS -->
+        <!-- ========================================================= -->
+        <div id="seccion-productos" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-producto">Agregar Producto</h2>
+                <form id="form-producto" novalidate>
+                    <input type="hidden" id="producto-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="producto-nombre">Nombre:</label>
+                            <input type="text" id="producto-nombre" placeholder="Ej: Laptop HP" maxlength="150" required>
+                            <span class="error" id="error-producto-nombre"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="producto-precio">Precio ($):</label>
+                            <input type="number" id="producto-precio" placeholder="Ej: 899.99" min="0.01" step="0.01" required>
+                            <span class="error" id="error-producto-precio"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-producto">Guardar</button>
+                        <button type="button" id="btn-cancelar-producto" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Productos <span id="contador-productos" class="badge badge-neutral"></span></h2>
+                <p id="carga-productos">Cargando...</p>
+                <table id="tabla-productos" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-productos"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: COMPRAS -->
+        <!-- ========================================================= -->
+        <div id="seccion-compras" class="seccion" style="display:none;">
+
+            <section class="formulario-section">
+                <h2>Registrar Compra</h2>
+                <form id="form-compra" novalidate>
+                    <div class="campos-grid campos-grid-3">
+                        <div class="campo">
+                            <label for="compra-usuario">Usuario:</label>
+                            <!-- Select se llena dinámicamente con los usuarios existentes -->
+                            <select id="compra-usuario" required>
+                                <option value="">-- Seleccionar --</option>
+                            </select>
+                            <span class="error" id="error-compra-usuario"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="compra-producto">Producto:</label>
+                            <select id="compra-producto" required>
+                                <option value="">-- Seleccionar --</option>
+                            </select>
+                            <span class="error" id="error-compra-producto"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="compra-cantidad">Cantidad:</label>
+                            <input type="number" id="compra-cantidad" value="1" min="1" step="1" required>
+                            <span class="error" id="error-compra-cantidad"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-registrar-compra">Registrar Compra</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Historial de Compras <span id="contador-compras" class="badge badge-neutral"></span></h2>
+                <p id="carga-compras">Cargando...</p>
+                <table id="tabla-compras" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Producto</th>
+                            <th>Precio Unit.</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-compras"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- Notificaciones -->
+        <div id="notificacion" class="notificacion" style="display:none;"></div>
+
+    </main>
+
+    <footer>
+        <p>PNT — Práctica 3: Express + CORS + Relaciones MySQL</p>
+    </footer>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
