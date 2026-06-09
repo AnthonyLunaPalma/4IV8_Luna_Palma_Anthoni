@@ -596,12 +596,12 @@ const errorActividadColor = document.getElementById('error-actividad-color');
 async function cargarActividad() {
     try {
         const resp = await fetchAPI('/api/actividad');
-        cargarActividad.style.display = 'none';
+        cargaActividad.style.display = 'none';
 
         if (resp.data.length === 0) {
             tablaActividad.style.display = 'none';
-            cargarActividad.textContent = 'No hay guitarras registradas.';
-            cargarActividad.style.display = 'block';
+            cargaActividad.textContent = 'No hay guitarras registradas.';
+            cargaActividad.style.display = 'block';
         } else {
             tablaActividad.style.display = 'table';
             tbodyActividad.innerHTML = '';
@@ -609,8 +609,8 @@ async function cargarActividad() {
                 const fila = document.createElement('tr');
                 fila.innerHTML = `
                     <td>${a.id}</td>
-                    <td>${escapeHtml(a.nombre)}</td>
                     <td>$${parseFloat(a.precio).toFixed(2)}</td>
+                    <td>${escapeHtml(a.marca)}</td>
                     <td>
                         <button class="btn-editar" onclick="editarActividad(${a.id})">Editar</button>
                         <button class="btn-eliminar" onclick="confirmarEliminarActividad(${a.id}, '${escapeHtml(a.marca)}')">Eliminar</button>
@@ -621,7 +621,7 @@ async function cargarActividad() {
         }
         contadorActividad.textContent = `${resp.count}`;
     } catch (error) {
-        mostrarNotificacion('Error al cargar guitarras: ' + error.message, 'error');
+        mostrarNotificacion('Error al cargar Guitarras: ' + error.message, 'error');
     }
 }
 
@@ -676,8 +676,8 @@ formActividad.addEventListener('submit', async (e) => {
     const datos = {
         marca: inputActividadMarca.value.trim(),
         precio: parseFloat(inputActividadPrecio.value),
-        trastes: inputActividadTrastes,
-        color: inputActividadColor
+        trastes: parseInt(inputActividadTrastes.value, 10),
+        color: inputActividadColor.value.trim()
     };
     const id = inputActividadId.value;
 
@@ -699,7 +699,6 @@ formActividad.addEventListener('submit', async (e) => {
         }
         limpiarFormActividad();
         cargarActividad();
-        cargarSelectActividad();
     } catch (error) {
         mostrarNotificacion(error.message, 'error');
     }
@@ -717,7 +716,7 @@ async function editarActividad(id) {
         btnGuardarActividad.textContent = 'Actualizar';
         btnCancelarActividad.style.display = 'inline-block';
         cambiarSeccion('actividad');
-        formProducto.scrollIntoView({ behavior: 'smooth' });
+        formActividad.scrollIntoView({ behavior: 'smooth' });
     } catch (error) {
         mostrarNotificacion(error.message, 'error');
     }
@@ -735,7 +734,6 @@ async function eliminarActividad(id) {
         mostrarNotificacion('Guitarra eliminada', 'exito');
         if (inputActividadId.value === String(id)) limpiarFormActividad();
         cargarActividad();
-        cargarSelectActividad();
     } catch (error) {
         mostrarNotificacion(error.message, 'error');
     }
