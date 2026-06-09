@@ -35,11 +35,12 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 const usuariosRouter = require('./Routers/usuarios');
 const productosRouter = require('./Routers/productos');
 const comprasRouter = require('./Routers/compras');
+const actividadRouter = require('./Routers/actividad');
 
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/productos', productosRouter);
 app.use('/api/compras', comprasRouter);
-
+app.use('/api/actividad', actividadRouter);
 
 //vamos a documentar cada endpoint
 app.get('/api', (req, res) => {
@@ -67,8 +68,14 @@ app.get('/api', (req, res) => {
                 crear : 'POST /api/compras',
                 actualizar : 'PUT /api/compras/:id',
                 eliminar : 'DELETE /api/compras/:id'
+            },
+            actividad : {
+                listar : 'GET /api/actividad',
+                obtener : 'GET /api/actividad/:id',
+                crear : 'POST /api/actividad',
+                actualizar : 'PUT /api/actividad/:id',
+                eliminar : 'DELETE /api/actividad/:id'
             }
-
         }
     });
 });

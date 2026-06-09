@@ -573,6 +573,177 @@ async function eliminarCompra(id) {
 }
 
 // ============================================================
+// 3. MÓDULO DE ACTIVIDAD
+// ============================================================
+const formActividad = document.getElementById('form-actividad');
+const inputActividadId = document.getElementById('actividad-id');
+const inputActividadPrecio = document.getElementById('actividad-precio');
+const inputActividadMarca = document.getElementById('actividad-marca');
+const inputActividadTrastes = document.getElementById('actividad-trastes');
+const inputActividadColor = document.getElementById('actividad-color');
+const formTituloActividad = document.getElementById('form-titulo-actividad');
+const btnGuardarActividad = document.getElementById('btn-guardar-actividad');
+const btnCancelarActividad = document.getElementById('btn-cancelar-actividad');
+const tbodyActividad = document.getElementById('tbody-actividad');
+const tablaActividad = document.getElementById('tabla-actividad');
+const cargaActividad = document.getElementById('carga-actividad');
+const contadorActividad = document.getElementById('contador-actividad');
+const errorActividadPrecio = document.getElementById('error-actividad-precio');
+const errorActividadMarca = document.getElementById('error-actividad-marca');
+const errorActividadTrastes = document.getElementById('error-actividad-trastes');
+const errorActividadColor = document.getElementById('error-actividad-color');
+
+async function cargarActividad() {
+    try {
+        const resp = await fetchAPI('/api/actividad');
+        cargarActividad.style.display = 'none';
+
+        if (resp.data.length === 0) {
+            tablaActividad.style.display = 'none';
+            cargarActividad.textContent = 'No hay guitarras registradas.';
+            cargarActividad.style.display = 'block';
+        } else {
+            tablaActividad.style.display = 'table';
+            tbodyActividad.innerHTML = '';
+            resp.data.forEach(a => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${a.id}</td>
+                    <td>${escapeHtml(a.nombre)}</td>
+                    <td>$${parseFloat(a.precio).toFixed(2)}</td>
+                    <td>
+                        <button class="btn-editar" onclick="editarActividad(${a.id})">Editar</button>
+                        <button class="btn-eliminar" onclick="confirmarEliminarActividad(${a.id}, '${escapeHtml(a.marca)}')">Eliminar</button>
+                    </td>
+                `;
+                tbodyActividad.appendChild(fila);
+            });
+        }
+        contadorActividad.textContent = `${resp.count}`;
+    } catch (error) {
+        mostrarNotificacion('Error al cargar guitarras: ' + error.message, 'error');
+    }
+}
+
+function validarFormActividad() {
+    let ok = true;
+    const precio = inputActividadPrecio.value;
+    const marca = inputActividadMarca.value.trim();
+    const trastes = inputActividadTrastes.value;
+    const color = inputActividadColor.value;
+
+    if (!precio || parseFloat(precio) <= 0) {
+        errorActividadPrecio.textContent = 'Precio debe ser mayor que 0';
+        inputActividadPrecio.classList.add('input-error');
+        ok = false;
+    } else {
+        errorActividadPrecio.textContent = '';
+        inputActividadPrecio.classList.remove('input-error');
+    }
+
+    if (!marca || marca.length < 2) {
+        errorActividadMarca.textContent = 'Mínimo 2 caracteres';
+        inputActividadMarca.classList.add('input-error');
+        ok = false;
+    } else {
+        errorActividadMarca.textContent = '';
+        inputActividadMarca.classList.remove('input-error');
+    }
+
+    return ok;
+}
+
+function limpiarFormActividad() {
+    formActividad.reset();
+    inputActividadId.value = '';
+    formTituloActividad.textContent = 'Agregar Guitarra';
+    btnGuardarActividad.textContent = 'Guardar';
+    btnCancelarActividad.style.display = 'none';
+    errorActividadMarca.textContent = '';
+    errorActividadPrecio.textContent = '';
+    errorActividadTrastes.textContent = '';
+    errorActividadColor.textContent = '';
+    inputActividadMarca.classList.remove('input-error');
+    inputActividadPrecio.classList.remove('input-error');
+    inputActividadTrastes.classList.remove('input-error');
+    inputActividadColor.classList.remove('input-error');
+}
+
+formActividad.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validarFormActividad()) return;
+
+    const datos = {
+        marca: inputActividadMarca.value.trim(),
+        precio: parseFloat(inputActividadPrecio.value),
+        trastes: inputActividadTrastes,
+        color: inputActividadColor
+    };
+    const id = inputActividadId.value;
+
+    try {
+        if (id) {
+            await fetchAPI(`/api/actividad/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            });
+            mostrarNotificacion('Guitarra actualizada', 'exito');
+        } else {
+            await fetchAPI('/api/actividad', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            });
+            mostrarNotificacion('Guitarra insertada', 'exito');
+        }
+        limpiarFormActividad();
+        cargarActividad();
+        cargarSelectActividad();
+    } catch (error) {
+        mostrarNotificacion(error.message, 'error');
+    }
+});
+
+async function editarActividad(id) {
+    try {
+        const resp = await fetchAPI(`/api/actividad/${id}`);
+        inputActividadId.value = resp.data.id;
+        inputActividadMarca.value = resp.data.marca;
+        inputActividadPrecio.value = resp.data.precio;
+        inputActividadTrastes.value = resp.data.trastes;
+        inputActividadColor.value = resp.data.color;
+        formTituloActividad.textContent = 'Editar Guitarra';
+        btnGuardarActividad.textContent = 'Actualizar';
+        btnCancelarActividad.style.display = 'inline-block';
+        cambiarSeccion('actividad');
+        formProducto.scrollIntoView({ behavior: 'smooth' });
+    } catch (error) {
+        mostrarNotificacion(error.message, 'error');
+    }
+}
+
+function confirmarEliminarActividad(id, marca) {
+    if (confirm(`¿Eliminar "${marca}"?\nSi tiene compras asociadas, no se podrá eliminar.`)) {
+        eliminarActividad(id);
+    }
+}
+
+async function eliminarActividad(id) {
+    try {
+        await fetchAPI(`/api/actividad/${id}`, { method: 'DELETE' });
+        mostrarNotificacion('Guitarra eliminada', 'exito');
+        if (inputActividadId.value === String(id)) limpiarFormActividad();
+        cargarActividad();
+        cargarSelectActividad();
+    } catch (error) {
+        mostrarNotificacion(error.message, 'error');
+    }
+}
+
+btnCancelarActividad.addEventListener('click', limpiarFormActividad);
+
+// ============================================================
 // 5. NAVEGACIÓN POR PESTAÑAS
 // ============================================================
 // Esta función muestra una sección y oculta las demás.
@@ -615,6 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarUsuarios();
     cargarProductos();
     cargarCompras();
+    cargarActividad();
     cargarSelectUsuarios();
     cargarSelectProductos();
 });

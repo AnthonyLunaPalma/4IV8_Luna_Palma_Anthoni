@@ -16,6 +16,7 @@
             <button class="tab active" onclick="cambiarSeccion('usuarios')">Usuarios</button>
             <button class="tab" onclick="cambiarSeccion('productos')">Productos</button>
             <button class="tab" onclick="cambiarSeccion('compras')">Compras</button>
+            <button class="tab" onclick="cambiarSeccion('actividad')">Actividad</button>
         </nav>
     </header>
 
@@ -174,6 +175,63 @@
                         </tr>
                     </thead>
                     <tbody id="tbody-compras"></tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- SECCIÓN: ACTIVIDAD -->
+        <!-- ========================================================= -->
+        <div id="seccion-actividad" class="seccion">
+
+            <section class="formulario-section">
+                <h2 id="form-titulo-actividad">Agregar Guitarra</h2>
+                <form id="form-actividad" novalidate>
+                    <input type="hidden" id="actividad-id">
+                    <div class="campos-grid">
+                        <div class="campo">
+                            <label for="actividad-precio">Precio:</label>
+                            <input type="number" id="actividad-precio" placeholder="Ej: 500" maxlength="150" required>
+                            <span class="error" id="error-actividad-precio"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="actividad-marca">Marca:</label>
+                            <input type="text" id="actividad-marca" placeholder="Ej: Fender" maxlength="100" required>
+                            <span class="error" id="error-actividad-marca"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="actividad-trastes">Número de trastes:</label>
+                            <input type="number" id="actividad-trastes" placeholder="Ej: 12" maxlength="100" required>
+                            <span class="error" id="error-actividad-trastes"></span>
+                        </div>
+                        <div class="campo">
+                            <label for="actividad-color">Color:</label>
+                            <input type="text" id="actividad-color" placeholder="Ej: rojo con naranja" maxlength="150" required>
+                            <span class="error" id="error-actividad-color"></span>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <button type="submit" id="btn-guardar-actividad">Guardar</button>
+                        <button type="button" id="btn-cancelar-actividad" class="btn-secundario" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="tabla-section">
+                <h2>Tabla de Guitarras<span id="contador-actividad" class="badge badge-neutral"></span></h2>
+                <p id="carga-actividad">Cargando...</p>
+                <table id="tabla-actividad" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Precio</th>
+                            <th>Marca</th>
+                            <th>Numero de trastes</th>
+                            <th>Color</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-actividad"></tbody>
                 </table>
             </section>
         </div>
