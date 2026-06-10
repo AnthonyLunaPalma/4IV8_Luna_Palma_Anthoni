@@ -263,6 +263,10 @@ const formGuitarra = document.getElementById('form-guitarra');
 const inputGuitarraId = document.getElementById('guitarra-id');
 const inputGuitarraNombre = document.getElementById('guitarra-nombre');
 const inputGuitarraPrecio = document.getElementById('guitarra-precio');
+const inputGuitarraCuerdas = document.getElementById('guitarra-cuerdas');
+const inputGuitarraClasi = document.getElementById('guitarra-clasi');
+const inputGuitarraMarca = document.getElementById('guitarra-marca');
+const inputGuitarraColors = document.getElementById('guitarra-color');
 const formTituloGuitarra = document.getElementById('form-titulo-guitarra');
 const btnGuardarGuitarra = document.getElementById('btn-guardar-guitarra');
 const btnCancelarGuitarra = document.getElementById('btn-cancelar-guitarra');
@@ -272,6 +276,10 @@ const cargaGuitarras = document.getElementById('carga-guitarras');
 const contadorGuitarras = document.getElementById('contador-guitarras');
 const errorGuitarraNombre = document.getElementById('error-guitarra-nombre');
 const errorGuitarraPrecio = document.getElementById('error-guitarra-precio');
+const errorGuitarraCuerdas = document.getElementById('error-guitarra-cuerdas');
+const errorGuitarraClasi = document.getElementById('error-guitarra-clasi');
+const errorGuitarraMarca = document.getElementById('error-guitarra-marca');
+const errorGuitarraColor = document.getElementById('error-guitarra-color');
 
 async function cargarGuitarras() {
     try {
