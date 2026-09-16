@@ -261,7 +261,7 @@ btnCancelarUsuario.addEventListener('click', limpiarFormUsuario);
 
 const formGuitarra = document.getElementById('form-guitarra');
 const inputGuitarraId = document.getElementById('guitarra-id');
-const inputGuitarraNombre = document.getElementById('guitarra-nombre');
+const inputGuitarraNombre = document.getElementById('guitarra-no mbre');
 const inputGuitarraPrecio = document.getElementById('guitarra-precio');
 const inputGuitarraCuerdas = document.getElementById('guitarra-cuerdas');
 const inputGuitarraClasi = document.getElementById('guitarra-clasi');
